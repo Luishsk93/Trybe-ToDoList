@@ -1,5 +1,5 @@
 # ToDoList
-Projeto do Bloco 5 da Trybe - "Aplicativo" de gerenciamento de projeto.
+Projeto do Bloco 5 da Trybe - <a href="https://luishsk93.github.io/Trybe-ToDoList/">'Aplicativo' de gerenciamento de projeto.</a>
 
 ## Habilidades desenvolvidas:
 <ul>
