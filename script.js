@@ -24,13 +24,12 @@ listaTarefas.addEventListener('click', pintaSoUm);
 
 function riscaTarefaCompletada(event) {
   const x = event.target;
-  const nomeDaClasse = x.className;
-  if (nomeDaClasse === 'tarefa completed') {
+  if (x.className === 'tarefa completed') {
     x.style.textDecoration = 'none';
-    nomeDaClasse = 'tarefa';
+    x.className = 'tarefa';
   } else {
     x.style.textDecoration = 'line-through solid rgb(0, 0, 0)';
-    nomeDaClasse = 'tarefa completed';
+    x.className = 'tarefa completed';
   }
 }
 listaTarefas.addEventListener('dblclick', riscaTarefaCompletada);
