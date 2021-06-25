@@ -3,6 +3,7 @@ const botao = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
 
+// Cria a tarefa e deixa o input em branco
 function criaTarefa() {
   const tarefa = document.createElement('li');
   // Referencia da propriedade value https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onkeyup_addeventlistener
@@ -13,6 +14,7 @@ function criaTarefa() {
 }
 botao.addEventListener('click', criaTarefa);
 
+// Ao selecionar uma tarefa, pinta esse de cinza e descolore o resto.
 function pintaSoUm(event) {
   const x = event.target;
   for (let i = 0; i < listaTarefas.childElementCount; i += 1) {
@@ -22,6 +24,7 @@ function pintaSoUm(event) {
 }
 listaTarefas.addEventListener('click', pintaSoUm);
 
+// Ao dar duplo clique em uma tarefa, risca. Tira o risco ao dar o duplo clique denovo.
 function riscaTarefaCompletada(event) {
   const x = event.target;
   if (x.className === 'tarefa completed') {
@@ -33,8 +36,10 @@ function riscaTarefaCompletada(event) {
   }
 }
 listaTarefas.addEventListener('dblclick', riscaTarefaCompletada);
+
 // A função abaixo foi baseado nessa referencia https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
 
+// Remove todos as tarefas da lista
 function removeTudo() {
   const elementos = document.getElementsByClassName('tarefa');
   while (elementos.length > 0) {
@@ -44,6 +49,7 @@ function removeTudo() {
 
 document.getElementById('apaga-tudo').addEventListener('click', removeTudo);
 
+// Remove as tarefas riscadas da lista
 function removeFinalizados() {
   const elementos = document.getElementsByClassName('tarefa completed');
   while (elementos.length > 0) {
@@ -52,3 +58,18 @@ function removeFinalizados() {
 }
 
 document.getElementById('remover-finalizados').addEventListener('click', removeFinalizados);
+
+// Salva as tarefas da lista
+function salvarTarefas() {
+  localStorage.clear();
+  const todasTarefas = document.querySelector('ol').innerHTML;
+  localStorage.setItem('listaSalva', todasTarefas);
+}
+
+document.getElementById('salvar-tarefas').addEventListener('click', salvarTarefas);
+
+function recuperarListaSalva() {
+  document.querySelector('ol').innerHTML = localStorage.getItem('listaSalva');
+};
+
+window.addEventListener('load', recuperarListaSalva);
