@@ -59,17 +59,42 @@ function removeFinalizados() {
 
 document.getElementById('remover-finalizados').addEventListener('click', removeFinalizados);
 
-// Salva as tarefas da lista
+// Salva as tarefas da lista. Usei como referencia o codigo de uma colega: https://github.com/CarolSi-hub/Trybe-ToDoList/blob/master/script.js
 function salvarTarefas() {
   localStorage.clear();
-  const todasTarefas = document.querySelector('ol').innerHTML;
+  const todasTarefas = listaTarefas.innerHTML;
   localStorage.setItem('listaSalva', todasTarefas);
 }
 
 document.getElementById('salvar-tarefas').addEventListener('click', salvarTarefas);
 
+// Recupera a lista salva
 function recuperarListaSalva() {
-  document.querySelector('ol').innerHTML = localStorage.getItem('listaSalva');
+  listaTarefas.innerHTML = localStorage.getItem('listaSalva');
 };
 
 window.addEventListener('load', recuperarListaSalva);
+
+function moverParaCima() {
+  for (let i = 1; i < listaTarefas.childElementCount; i += 1) {
+    if (listaTarefas.children[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      listaTarefas.children[i].style.backgroundColor = 'white';
+      listaTarefas.children[i-1].style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+}
+
+document.getElementById('mover-cima').addEventListener('click', moverParaCima);
+
+function moverParaBaixo() {
+  let marcador = null;
+  for (let i = 0; i < listaTarefas.childElementCount - 1; i += 1) {
+    if (listaTarefas.children[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      marcador = i;
+    }
+  }
+  listaTarefas.children[marcador].style.backgroundColor = 'white';
+  listaTarefas.children[marcador+1].style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
+document.getElementById('mover-baixo').addEventListener('click', moverParaBaixo);
