@@ -98,3 +98,15 @@ function moverParaBaixo() {
 }
 
 document.getElementById('mover-baixo').addEventListener('click', moverParaBaixo);
+
+function removerSelecionado() {
+  let marcador = null;
+  for (let i = 0; i < listaTarefas.childElementCount; i += 1) {
+    if (listaTarefas.children[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      marcador = i
+    }
+  }
+  listaTarefas.removeChild(listaTarefas.children[marcador]);
+}
+
+document.getElementById('remover-selecionado').addEventListener('click', removerSelecionado);
