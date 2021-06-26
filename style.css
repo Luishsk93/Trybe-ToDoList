@@ -1,0 +1,38 @@
+h1, p {
+  font-family: Trebuchet MS;
+  text-align: center;
+}
+
+button {
+  border-radius: 20px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+#criar-tarefa, #remover-finalizados {
+  background-color: #034f84;
+}
+
+#remover-selecionado, #apaga-tudo {
+    background-color: #c94c4c;
+}
+
+#mover-cima, #mover-baixo {
+  background-color: #ff7b25;
+}
+
+#salvar-tarefas {
+  background-color: #82b74b;
+}
+
+body {
+  background-color: #acd67f;
+}
+.main-container {
+  margin: auto;
+  border-radius: 40px;
+  width: fit-content;
+  padding: 50px;
+  flex-direction: column;
+  background-color: white;
+}
